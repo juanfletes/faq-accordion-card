@@ -1,41 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | FAQ Accordion Card</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-  <p></p>
-  How many team members can I invite?
-  You can invite up to 2 additional users on the Free plan. There is no limit on 
-  team members for the Premium plan.
+    <title>Frontend Mentor | FAQ Accordion Card</title>
 
-  What is the maximum file upload size?
-  No more than 2GB. All files in your account must fit your allotted storage space.
+    <style>
+      * {
+        border: 1px solid red;
+      }
 
-  How do I reset my password?
-  Click “Forgot password” from the login page or “Change password” from your profile page.
-  A reset link will be emailed to you.
+      @media screen and (max-width: 375px) {
+        .content {
+          width: 300px;
+          margin: auto;
+          margin-top: 20vh;
+          border-radius: 20px;
+        }
 
-  Can I cancel my subscription?
-  Yes! Send us a message and we’ll process your request no questions asked.
+        .content-header {
+          position: relative;
+          text-align: center;
+        }
 
-  Do you provide additional support?
-  Chat and email support is available 24/7. Phone lines are open during normal business hours.
+        .logo {
+          width: 266px;
+          height: 196px;
+          position: absolute;
+          top: -98px;
+          left: 15px;
+        }
 
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+        .title {
+          margin-top: 100px;
+        }
+
+        .content-body {
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="content-header">
+        <span class="logo"> logo </span>
+        <div class="title">FAQ</div>
+      </div>
+      <div class="content-body">
+        <u class="acordion">
+          <li class="acordion-item">
+            <span class="item-title">
+              How many team members can I invite?
+            </span>
+            <div class="item-description">
+              You can invite up to 2 additional users on the Free plan. There is
+              no limit on team members for the Premium plan.
+            </div>
+          </li>
+          <li class="acordion-item">
+            <span class="item-title">
+              What is the maximum file upload size?
+            </span>
+            <div class="item-description">
+              No more than 2GB. All files in your account must fit your allotted
+              storage space.
+            </div>
+          </li>
+          <li class="acordion-item">
+            <span class="item-title"> How do I reset my password? </span>
+            <div class="item-description">
+              Click “Forgot password” from the login page or “Change password”
+              from your profile page. A reset link will be emailed to you.
+            </div>
+          </li>
+          <li class="acordion-item">
+            <span class="item-title"> Can I cancel my subscription? </span>
+            <div class="item-description">
+              Yes! Send us a message and we’ll process your request no questions
+              asked.
+            </div>
+          </li>
+          <li class="acordion-item">
+            <span class="item-title"> Do you provide additional support? </span>
+            <div class="item-description">
+              Chat and email support is available 24/7. Phone lines are open
+              during normal business hours.
+            </div>
+          </li>
+        </u>
+      </div>
+    </div>
+  </body>
 </html>
