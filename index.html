@@ -3,8 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
-
     <link
       rel="icon"
       type="image/png"
@@ -12,40 +10,113 @@
       href="./images/favicon-32x32.png"
     />
 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Frontend Mentor | FAQ Accordion Card</title>
 
     <style>
-      * {
-        border: 1px solid red;
-      }
-
       @media screen and (max-width: 375px) {
+        body {
+          font-size: 12px;
+          font-family: "Kumbh Sans", sans-serif;
+          background-image: linear-gradient(
+            to bottom right,
+            hsl(273, 75%, 66%),
+            hsl(240, 73%, 65%)
+          );
+          height: 100vh;
+          color: hsl(238, 29%, 16%);
+        }
+
         .content {
-          width: 300px;
+          background: url("./images/bg-pattern-mobile.svg");
+          background-repeat: no-repeat;
+          background-position: top center;
+          background-color: white;
+          width: 80vw;
           margin: auto;
-          margin-top: 20vh;
+          margin-top: 150px;
           border-radius: 20px;
+          padding: 15px;
+          box-shadow: 0px 20px 40px -20px hsl(238deg 29% 16%);
         }
 
         .content-header {
           position: relative;
           text-align: center;
+          height: 150px;
         }
 
         .logo {
+          background: url("./images/illustration-woman-online-mobile.svg");
           width: 266px;
           height: 196px;
           position: absolute;
-          top: -98px;
-          left: 15px;
+          top: -145px;
         }
 
         .title {
-          margin-top: 100px;
+          position: relative;
+          top: 90px;
+          font-size: 1.4em;
         }
 
         .content-body {
           padding: 10px;
+        }
+
+        .accordion {
+          margin: 0px;
+          padding: 0px;
+        }
+
+        .accordion-item {
+          list-style-type: none;
+          border-bottom: 1px solid hsl(240, 5%, 91%);
+          padding-bottom: 15px;
+          margin-bottom: 15px;
+        }
+
+        .item-title {
+          cursor: pointer;
+          width: 100%;
+          color: hsl(237, 12%, 33%);
+        }
+
+        .item-title:after {
+          content: url("./images/icon-arrow-down.svg");
+          float: right;
+        }
+
+        .active > .item-title:after {
+          animation-name: arrow-rotate;
+          animation-duration: 0.5s;
+          animation-iteration-count: 1;
+          animation-fill-mode: forwards;
+        }
+
+        .item-description {
+          display: none;
+          padding-top: 10px;
+          color: hsl(240, 6%, 50%);
+        }
+
+        .active > a.item-title {
+          font-weight: bold;
+          font-size: 1.1em;
+        }
+
+        .active > div.item-description {
+          display: block !important;
+        }
+
+        @keyframes arrow-rotate {
+          100% {
+            transform: rotate(180deg);
+          }
         }
       }
     </style>
@@ -53,52 +124,59 @@
   <body>
     <div class="content">
       <div class="content-header">
-        <span class="logo"> logo </span>
-        <div class="title">FAQ</div>
+        <div class="logo"></div>
+        <div class="title">
+          <h1>FAQ</h1>
+        </div>
       </div>
       <div class="content-body">
-        <u class="acordion">
-          <li class="acordion-item">
-            <span class="item-title">
-              How many team members can I invite?
-            </span>
+        <ul class="accordion">
+          <li class="accordion-item">
+            <a class="item-title">How many team members can I invite?</a>
             <div class="item-description">
               You can invite up to 2 additional users on the Free plan. There is
               no limit on team members for the Premium plan.
             </div>
           </li>
-          <li class="acordion-item">
-            <span class="item-title">
-              What is the maximum file upload size?
-            </span>
+          <li class="accordion-item">
+            <a class="item-title"> What is the maximum file upload size? </a>
             <div class="item-description">
               No more than 2GB. All files in your account must fit your allotted
               storage space.
             </div>
           </li>
-          <li class="acordion-item">
-            <span class="item-title"> How do I reset my password? </span>
+          <li class="accordion-item">
+            <a class="item-title"> How do I reset my password? </a>
             <div class="item-description">
               Click “Forgot password” from the login page or “Change password”
               from your profile page. A reset link will be emailed to you.
             </div>
           </li>
-          <li class="acordion-item">
-            <span class="item-title"> Can I cancel my subscription? </span>
+          <li class="accordion-item">
+            <a class="item-title"> Can I cancel my subscription? </a>
             <div class="item-description">
               Yes! Send us a message and we’ll process your request no questions
               asked.
             </div>
           </li>
-          <li class="acordion-item">
-            <span class="item-title"> Do you provide additional support? </span>
+          <li class="accordion-item">
+            <a class="item-title"> Do you provide additional support? </a>
             <div class="item-description">
               Chat and email support is available 24/7. Phone lines are open
               during normal business hours.
             </div>
           </li>
-        </u>
+        </ul>
       </div>
     </div>
+
+    <script>
+      const items = document.querySelectorAll(".accordion-item");
+      for (let i = 0; i < items.length; i++) {
+        items[i].addEventListener("click", () =>
+          items[i].classList.toggle("active")
+        );
+      }
+    </script>
   </body>
 </html>
