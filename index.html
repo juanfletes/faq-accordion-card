@@ -18,17 +18,124 @@
     <title>Frontend Mentor | FAQ Accordion Card</title>
 
     <style>
+      body {
+        font-size: 12px;
+        font-family: "Kumbh Sans", sans-serif;
+        background-image: linear-gradient(
+          to bottom right,
+          hsl(273, 75%, 66%),
+          hsl(240, 73%, 65%)
+        );
+        background-size: cover;
+        height: 100vh;
+        color: hsl(238, 29%, 16%);
+      }
+
+      .accordion-box {
+        position: relative;
+        width: 840px;
+        margin: auto;
+        margin-top: 150px;
+      }
+
+      .content {
+        background: url("./images/bg-pattern-desktop.svg");
+        background-repeat: no-repeat;
+        background-position: top -290px left -580px;
+        background-color: white;
+        border-radius: 20px;
+        padding: 70px;
+        box-shadow: 0px 20px 40px -20px hsl(238deg 29% 16%);
+        overflow: hidden;
+      }
+
+      .content-header {
+        position: relative;
+        float: left;
+      }
+
+      .box {
+        position: absolute;
+        top: 203px;
+        left: -90px;
+        z-index: 2;
+      }
+
+      .logo {
+        background: url("./images/illustration-woman-online-desktop.svg");
+        width: 472px;
+        height: 359px;
+        position: absolute;
+        left: -155px;
+      }
+
+      .title {
+        font-size: 1.4em;
+      }
+
+      .content-body {
+        padding: 10px;
+        float: right;
+        width: 50%;
+      }
+
+      .accordion {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      .accordion-item {
+        list-style-type: none;
+        border-bottom: 1px solid hsl(240, 5%, 91%);
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+      }
+
+      .item-title {
+        cursor: pointer;
+        width: 100%;
+        color: hsl(237, 12%, 33%);
+      }
+
+      .item-title:after {
+        content: url("./images/icon-arrow-down.svg");
+        float: right;
+      }
+
+      .active > .item-title:after {
+        animation-name: arrow-rotate;
+        animation-duration: 0.5s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
+
+      .item-description {
+        display: none;
+        padding-top: 10px;
+        color: hsl(240, 6%, 50%);
+      }
+
+      .active > a.item-title {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+
+      .active > div.item-description {
+        display: block !important;
+      }
+
+      @keyframes arrow-rotate {
+        100% {
+          transform: rotate(180deg);
+        }
+      }
+
       @media screen and (max-width: 375px) {
-        body {
-          font-size: 12px;
-          font-family: "Kumbh Sans", sans-serif;
-          background-image: linear-gradient(
-            to bottom right,
-            hsl(273, 75%, 66%),
-            hsl(240, 73%, 65%)
-          );
-          height: 100vh;
-          color: hsl(238, 29%, 16%);
+        .accordion-box {
+          position: relative;
+          width: 80vw;
+          margin: auto;
+          margin-top: 150px;
         }
 
         .content {
@@ -36,18 +143,16 @@
           background-repeat: no-repeat;
           background-position: top center;
           background-color: white;
-          width: 80vw;
-          margin: auto;
-          margin-top: 150px;
-          border-radius: 20px;
           padding: 15px;
-          box-shadow: 0px 20px 40px -20px hsl(238deg 29% 16%);
+          overflow: visible;
         }
 
         .content-header {
-          position: relative;
-          text-align: center;
-          height: 150px;
+          float: none;
+        }
+
+        .box {
+          display: none;
         }
 
         .logo {
@@ -55,118 +160,73 @@
           width: 266px;
           height: 196px;
           position: absolute;
-          top: -145px;
+          top: -122px;
+          left: -20px;
         }
 
         .title {
-          position: relative;
-          top: 90px;
-          font-size: 1.4em;
+          text-align: center;
         }
 
         .content-body {
-          padding: 10px;
-        }
-
-        .accordion {
-          margin: 0px;
-          padding: 0px;
-        }
-
-        .accordion-item {
-          list-style-type: none;
-          border-bottom: 1px solid hsl(240, 5%, 91%);
-          padding-bottom: 15px;
-          margin-bottom: 15px;
-        }
-
-        .item-title {
-          cursor: pointer;
-          width: 100%;
-          color: hsl(237, 12%, 33%);
-        }
-
-        .item-title:after {
-          content: url("./images/icon-arrow-down.svg");
-          float: right;
-        }
-
-        .active > .item-title:after {
-          animation-name: arrow-rotate;
-          animation-duration: 0.5s;
-          animation-iteration-count: 1;
-          animation-fill-mode: forwards;
-        }
-
-        .item-description {
-          display: none;
-          padding-top: 10px;
-          color: hsl(240, 6%, 50%);
-        }
-
-        .active > a.item-title {
-          font-weight: bold;
-          font-size: 1.1em;
-        }
-
-        .active > div.item-description {
-          display: block !important;
-        }
-
-        @keyframes arrow-rotate {
-          100% {
-            transform: rotate(180deg);
-          }
+          margin-top: 80px;
+          float: none;
+          width: 90%;
         }
       }
     </style>
   </head>
   <body>
-    <div class="content">
-      <div class="content-header">
-        <div class="logo"></div>
-        <div class="title">
-          <h1>FAQ</h1>
-        </div>
+    <div class="accordion-box">
+      <div class="box">
+        <img src="./images/illustration-box-desktop.svg" />
       </div>
-      <div class="content-body">
-        <ul class="accordion">
-          <li class="accordion-item">
-            <a class="item-title">How many team members can I invite?</a>
-            <div class="item-description">
-              You can invite up to 2 additional users on the Free plan. There is
-              no limit on team members for the Premium plan.
-            </div>
-          </li>
-          <li class="accordion-item">
-            <a class="item-title"> What is the maximum file upload size? </a>
-            <div class="item-description">
-              No more than 2GB. All files in your account must fit your allotted
-              storage space.
-            </div>
-          </li>
-          <li class="accordion-item">
-            <a class="item-title"> How do I reset my password? </a>
-            <div class="item-description">
-              Click “Forgot password” from the login page or “Change password”
-              from your profile page. A reset link will be emailed to you.
-            </div>
-          </li>
-          <li class="accordion-item">
-            <a class="item-title"> Can I cancel my subscription? </a>
-            <div class="item-description">
-              Yes! Send us a message and we’ll process your request no questions
-              asked.
-            </div>
-          </li>
-          <li class="accordion-item">
-            <a class="item-title"> Do you provide additional support? </a>
-            <div class="item-description">
-              Chat and email support is available 24/7. Phone lines are open
-              during normal business hours.
-            </div>
-          </li>
-        </ul>
+      <div class="content">
+        <div class="content-header">
+          <div class="logo"></div>
+        </div>
+        <div class="content-body">
+          <div class="title">
+            <h1>FAQ</h1>
+          </div>
+          <ul class="accordion">
+            <li class="accordion-item">
+              <a class="item-title">How many team members can I invite?</a>
+              <div class="item-description">
+                You can invite up to 2 additional users on the Free plan. There
+                is no limit on team members for the Premium plan.
+              </div>
+            </li>
+            <li class="accordion-item">
+              <a class="item-title"> What is the maximum file upload size? </a>
+              <div class="item-description">
+                No more than 2GB. All files in your account must fit your
+                allotted storage space.
+              </div>
+            </li>
+            <li class="accordion-item">
+              <a class="item-title"> How do I reset my password? </a>
+              <div class="item-description">
+                Click “Forgot password” from the login page or “Change password”
+                from your profile page. A reset link will be emailed to you.
+              </div>
+            </li>
+            <li class="accordion-item">
+              <a class="item-title"> Can I cancel my subscription? </a>
+              <div class="item-description">
+                Yes! Send us a message and we’ll process your request no
+                questions asked.
+              </div>
+            </li>
+            <li class="accordion-item">
+              <a class="item-title"> Do you provide additional support? </a>
+              <div class="item-description">
+                Chat and email support is available 24/7. Phone lines are open
+                during normal business hours.
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
